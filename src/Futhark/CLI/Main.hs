@@ -124,7 +124,6 @@ reportingIOErrors =
       exitWith $ ExitFailure 1
     onICE (Error CompilerBug s) = do
       T.hPutStrLn stderr "Internal compiler error."
-      T.hPutStrLn stderr "Please report this at https://github.com/diku-dk/futhark/issues."
       T.hPutStrLn stderr s
       exitWith $ ExitFailure 1
 
@@ -134,7 +133,6 @@ reportingIOErrors =
           pure () -- This corresponds to CTRL-C, which is not an error.
       | otherwise = do
           T.hPutStrLn stderr "Internal compiler error (unhandled IO exception)."
-          T.hPutStrLn stderr "Please report this at https://github.com/diku-dk/futhark/issues"
           T.hPutStrLn stderr $ showText e
           exitWith $ ExitFailure 1
 

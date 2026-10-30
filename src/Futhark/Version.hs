@@ -37,7 +37,7 @@ versionString =
   where
     unreleased =
       if last (versionBranch version) == 0
-        then " (prerelease - include info below when reporting bugs)"
+        then " (prerelease)"
         else mempty
     gitversion (Left _) =
       case commitIdFromFile of

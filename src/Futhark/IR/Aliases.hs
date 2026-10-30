@@ -221,7 +221,7 @@ newtype WithoutAliases rep m a
   deriving (Functor, Applicative, Monad)
 
 instance
-  (Monad m, RepTypes rep, RepTypes (Aliases rep)) =>
+  (Monad m, RepTypes rep) =>
   HasScope rep (WithoutAliases rep m)
   where
   lookupInfo name = WithoutAliases . asks $ \(extra, scope) ->
@@ -240,7 +240,7 @@ instance
       extra <> M.map removeNameInfoAliases scope
 
 instance
-  (Monad m, RepTypes rep, RepTypes (Aliases rep)) =>
+  (Monad m, RepTypes rep) =>
   LocalScope rep (WithoutAliases rep m)
   where
   localScope scope (WithoutAliases m) =

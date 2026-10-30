@@ -396,12 +396,7 @@ instance
     MemAcc <$> Engine.simplify acc <*> Engine.simplify ispace <*> Engine.simplify ts
 
 instance
-  ( PP.Pretty (ShapeBase d),
-    PP.Pretty (TypeBase (ShapeBase d) o),
-    PP.Pretty d,
-    PP.Pretty o,
-    PP.Pretty ret
-  ) =>
+  (PP.Pretty (TypeBase (ShapeBase d) o), PP.Pretty ret) =>
   PP.Pretty (MemInfo d o ret)
   where
   pretty (MemPrim bt) = PP.pretty bt

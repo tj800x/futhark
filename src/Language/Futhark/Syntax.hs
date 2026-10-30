@@ -579,7 +579,7 @@ data IdentBase f vn t = Ident
 
 deriving instance (Show (Info t)) => Show (IdentBase Info VName t)
 
-deriving instance (Show (Info t), Show vn) => Show (IdentBase NoInfo vn t)
+deriving instance (Show vn) => Show (IdentBase NoInfo vn t)
 
 instance (Eq vn) => Eq (IdentBase ty vn t) where
   x == y = identName x == identName y
@@ -1051,13 +1051,13 @@ data PatBase f vn t
 
 deriving instance (Show (Info t)) => Show (PatBase Info VName t)
 
-deriving instance (Show (NoInfo t), Show vn) => Show (PatBase NoInfo vn t)
+deriving instance (Show vn) => Show (PatBase NoInfo vn t)
 
-deriving instance (Eq (NoInfo t)) => Eq (PatBase NoInfo VName t)
+deriving instance Eq (PatBase NoInfo VName t)
 
 deriving instance (Eq (Info t)) => Eq (PatBase Info VName t)
 
-deriving instance (Ord (NoInfo t)) => Ord (PatBase NoInfo VName t)
+deriving instance Ord (PatBase NoInfo VName t)
 
 deriving instance (Ord (Info t)) => Ord (PatBase Info VName t)
 

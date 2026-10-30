@@ -684,10 +684,18 @@ slugBlockRedArrs :: SegBinOpSlug -> [VName]
 slugBlockRedArrs = blockRedArrs . slugInterms
 
 slugPrivChunks :: SegBinOpSlug -> [VName]
-slugPrivChunks = privateChunks . slugInterms
+slugPrivChunks slug =
+  case slugInterms slug of
+    NoncommPrimSegRedInterms {privateChunks = priv_chunks} -> priv_chunks
+    GeneralSegRedInterms {} ->
+      error "slugPrivChunks: expected noncommutative primitive reduction"
 
 slugCollCopyArrs :: SegBinOpSlug -> [VName]
-slugCollCopyArrs = collCopyArrs . slugInterms
+slugCollCopyArrs slug =
+  case slugInterms slug of
+    NoncommPrimSegRedInterms {collCopyArrs = arrs} -> arrs
+    GeneralSegRedInterms {} ->
+      error "slugCollCopyArrs: expected noncommutative primitive reduction"
 
 reductionStageOne ::
   [VName] ->

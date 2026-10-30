@@ -34,7 +34,7 @@ class Substitute a where
 instance (Substitute a) => Substitute [a] where
   substituteNames substs = map $ substituteNames substs
 
-instance (Substitute (Stm rep)) => Substitute (Stms rep) where
+instance (Substitutable rep) => Substitute (Stms rep) where
   substituteNames substs = fmap $ substituteNames substs
 
 instance (Substitute a, Substitute b) => Substitute (a, b) where

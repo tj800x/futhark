@@ -38,3 +38,10 @@ issue](https://github.com/diku-dk/futhark/issues?q=is%3Aissue+is%3Aopen+label%3A
 do not require deep knowledge of the code base.
 
 For contributing code, see [the hacking instructions](HACKING.md).
+
+Radeon OpenCL workflow
+======================
+
+This branch provides a [Radeon build and validation workflow](tools/radeon/README.md)
+using the existing OpenCL backend and an independent companion kit. Standard
+upstream build commands continue to work.

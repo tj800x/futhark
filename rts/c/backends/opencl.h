@@ -1076,7 +1076,10 @@ static struct opencl_device_option get_preferred_device(struct futhark_context *
     }
   }
 
-  ctx->error = strdup("Could not find acceptable OpenCL device.\n");
+  ctx->error = strdup("Could not find acceptable OpenCL device.\n"
+                      "Check the requested platform/device name and --list-devices.\n"
+                      "Sandboxes and containers may restrict device access (sandbox limitation?).\n"
+                      "Try running outside the restricted environment or enabling device access.\n");
   struct opencl_device_option device;
   return device;
 }

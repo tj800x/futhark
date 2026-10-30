@@ -175,6 +175,12 @@ might have better performance if you use the dedicated GPU instead.
 On a Mac with an AMD GPU, this is done by passing ``-dAMD`` to the
 generated Futhark executable.
 
+Device visibility can differ inside sandboxes or containers. A missing-device
+error may therefore indicate restricted device access rather than missing GPU
+support. Inspect ``--list-devices``, select a device by name, and retry outside
+the restricted environment when appropriate. A visible OpenCL CPU is not proof
+that the GPU is accessible.
+
 .. _`Homebrew`: https://brew.sh/
 
 .. _windows-installation:
